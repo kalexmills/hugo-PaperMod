@@ -20,6 +20,14 @@
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
+
+    {{ if .Page.Store.Get "hasMermaid" }}
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+    {{ end }}
+
   </header>
   {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
